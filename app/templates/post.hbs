@@ -1,0 +1,35 @@
+<h1 {{action 'toggleBody'}}>{{title}}</h1>
+<p>
+  Created on {{format-date created}}
+</p>
+<p>
+  {{#if isShowingBody}}
+    {{body}}
+  {{/if}}
+  <!--basic each loop-->
+  {{#each authors}}
+    {{this}},
+  {{/each}}
+</p>
+
+<!--Looping through objects in a controller-->
+<ul>
+  {{#each comments as comment}}
+    <li>{{name}} - {{comment}}</li>
+  {{/each}}
+</ul>
+
+<!-- Test using actions from controller -->
+<button type="button" name="button" {{action 'sayHello'}}>Hello</button>
+
+<hr>
+<h4>Add Comment</h4>
+<form class="form" action="index.html" method="post" {{action 'submitAction'  on='submit'}}>
+  <p>
+    Name: {{input value=name}}
+  </p>
+  <p>
+    Body: {{textarea value=comment}}
+  </p>
+  <button type="submit" name="submit">Submit</button>
+</form>
